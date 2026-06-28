@@ -1,30 +1,16 @@
-declare module "deps-qt-qml-raub" {
-	/**
-	 * Exports of `deps-qt-core-raub`
-	*/
-	export const core: {
-		bin: string;
-		include: string;
-	};
-	
-	/**
-	 * Exports of `deps-qt-gui-raub`
-	*/
-	export const gui: {
-		bin: string;
-		include: string;
-	};
-	
-	/**
-	 * Path to binaries
-	 *
-	 * Platform binary directory absolute path
-	*/
-	export const bin: string;
-	/**
-	 * Path to includes
-	 *
-	 * Include directory for this module
-	*/
-	export const include: string;
-}
+import type { getPaths } from '@node-3d/addon-tools';
+import type depsQtGui from '@node-3d/deps-qt-gui';
+import type { core as depsQtCore } from '@node-3d/deps-qt-gui';
+
+type AddonPaths = ReturnType<typeof getPaths>;
+
+export declare const core: typeof depsQtCore;
+export declare const gui: typeof depsQtGui;
+export declare const bin: AddonPaths['bin'];
+export declare const include: AddonPaths['include'];
+
+declare const depsQtQml: AddonPaths & {
+	gui: typeof depsQtGui;
+	core: typeof depsQtCore;
+};
+export default depsQtQml;

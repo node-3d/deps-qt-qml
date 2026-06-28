@@ -1,10 +1,16 @@
-'use strict';
+import { getPaths } from '@node-3d/addon-tools';
+import gui, { core } from '@node-3d/deps-qt-gui';
 
-const gui = require('deps-qt-gui-raub');
+const paths = getPaths(import.meta.dirname);
 
+export { core, gui };
+export const bin = paths.bin;
+export const include = paths.include;
 
-module.exports = {
+const depsQtQml = {
 	gui,
-	core : gui.core,
-	...require('addon-tools-raub').getPaths(__dirname),
+	core,
+	...paths,
 };
+
+export default depsQtQml;

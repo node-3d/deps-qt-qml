@@ -2,12 +2,12 @@
 
 This is a part of [Node3D](https://github.com/node-3d) project.
 
-[![NPM](https://badge.fury.io/js/deps-qt-qml-raub.svg)](https://badge.fury.io/js/deps-qt-qml-raub)
-[![ESLint](https://github.com/node-3d/deps-qt-qml-raub/actions/workflows/eslint.yml/badge.svg)](https://github.com/node-3d/deps-qt-qml-raub/actions/workflows/eslint.yml)
-[![Test](https://github.com/node-3d/deps-qt-qml-raub/actions/workflows/test.yml/badge.svg)](https://github.com/node-3d/deps-qt-qml-raub/actions/workflows/test.yml)
+[![NPM](https://badge.fury.io/js/%40node-3d%2Fdeps-qt-qml.svg)](https://badge.fury.io/js/@node-3d/deps-qt-qml)
+[![Lint](https://github.com/node-3d/deps-qt-qml/actions/workflows/lint.yml/badge.svg)](https://github.com/node-3d/deps-qt-qml/actions/workflows/lint.yml)
+[![Test](https://github.com/node-3d/deps-qt-qml/actions/workflows/test.yml/badge.svg)](https://github.com/node-3d/deps-qt-qml/actions/workflows/test.yml)
 
 ```console
-npm i -s deps-qt-qml-raub
+npm install @node-3d/deps-qt-qml
 ```
 
 This dependency package is distributing **Qt Qml 6.8.0**
@@ -20,7 +20,7 @@ binaries through **NPM** for **Node.js** addons.
 
 ### Windows
 
-Before any import of Qt-dependent module, there should be `require('deps-qt-qml-raub')`.
+Before any import of Qt-dependent module, there should be `require('@node-3d/deps-qt-qml')`.
 On Windows it adds Qt's DLL location to ENV PATH. On Unix it does nothing.
 
 
@@ -33,10 +33,10 @@ Adjust `binding.gyp`:
 
 ```javascript
   'variables': {
-    'bin': '<!(node -p "require(\'addon-tools-raub\').bin")',
-    'qt_core_bin': '<!(node -p "require(\'deps-qt-core-raub\').bin")',
-    'qt_gui_bin': '<!(node -p "require(\'deps-qt-gui-raub\').bin")',
-    'qt_qml_bin': '<!(node -e "require(\'deps-qt-qml-raub\').bin")',
+    'bin': '<!(node -p "require(\'@node-3d/addon-tools\').bin")',
+    'qt_core_bin': '<!(node -p "require(\'@node-3d/deps-qt-core\').bin")',
+    'qt_gui_bin': '<!(node -p "require(\'@node-3d/deps-qt-gui\').bin")',
+    'qt_qml_bin': '<!(node -e "require(\'@node-3d/deps-qt-qml\').bin")',
   },
   ...
   'targets': [
@@ -48,12 +48,12 @@ Adjust `binding.gyp`:
         ['OS=="linux"', {
           'libraries': [
             "-Wl,-rpath,'$$ORIGIN'",
-            "-Wl,-rpath,'$$ORIGIN/../node_modules/deps-qt-core-raub/<(bin)'",
-            "-Wl,-rpath,'$$ORIGIN/../node_modules/deps-qt-gui-raub/<(bin)'",
-            "-Wl,-rpath,'$$ORIGIN/../node_modules/deps-qt-qml-raub/<(bin)'",
-            "-Wl,-rpath,'$$ORIGIN/../../deps-qt-core-raub/<(bin)'",
-            "-Wl,-rpath,'$$ORIGIN/../../deps-qt-gui-raub/<(bin)'",
-            "-Wl,-rpath,'$$ORIGIN/../../deps-qt-qml-raub/<(bin)'",
+            "-Wl,-rpath,'$$ORIGIN/../node_modules/@node-3d/deps-qt-core/<(bin)'",
+            "-Wl,-rpath,'$$ORIGIN/../node_modules/@node-3d/deps-qt-gui/<(bin)'",
+            "-Wl,-rpath,'$$ORIGIN/../node_modules/@node-3d/deps-qt-qml/<(bin)'",
+            "-Wl,-rpath,'$$ORIGIN/../../@node-3d/deps-qt-core/<(bin)'",
+            "-Wl,-rpath,'$$ORIGIN/../../@node-3d/deps-qt-gui/<(bin)'",
+            "-Wl,-rpath,'$$ORIGIN/../../@node-3d/deps-qt-qml/<(bin)'",
             '<(qt_core_bin)/libicui18n.so.73',
             '<(qt_core_bin)/libicuuc.so.73',
             '<(qt_core_bin)/libicudata.so.73',
@@ -78,12 +78,12 @@ Adjust `binding.gyp`:
         ['OS=="mac"', {
           'libraries': [
             '-Wl,-rpath,@loader_path',
-            '-Wl,-rpath,@loader_path/../node_modules/deps-qt-core-raub/<(bin)',
-            '-Wl,-rpath,@loader_path/../node_modules/deps-qt-gui-raub/<(bin)',
-            '-Wl,-rpath,@loader_path/../node_modules/deps-qt-qml-raub/<(bin)',
-            '-Wl,-rpath,@loader_path/../../deps-qt-core-raub/<(bin)',
-            '-Wl,-rpath,@loader_path/../../deps-qt-gui-raub/<(bin)',
-            '-Wl,-rpath,@loader_path/../../deps-qt-qml-raub/<(bin)',
+            '-Wl,-rpath,@loader_path/../node_modules/@node-3d/deps-qt-core/<(bin)',
+            '-Wl,-rpath,@loader_path/../node_modules/@node-3d/deps-qt-gui/<(bin)',
+            '-Wl,-rpath,@loader_path/../node_modules/@node-3d/deps-qt-qml/<(bin)',
+            '-Wl,-rpath,@loader_path/../../@node-3d/deps-qt-core/<(bin)',
+            '-Wl,-rpath,@loader_path/../../@node-3d/deps-qt-gui/<(bin)',
+            '-Wl,-rpath,@loader_path/../../@node-3d/deps-qt-qml/<(bin)',
           ],
         }],
         

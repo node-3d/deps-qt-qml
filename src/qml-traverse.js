@@ -1,8 +1,5 @@
-'use strict';
+import fs from 'node:fs/promises';
+import { traverse } from '@node-3d/addon-tools';
 
-const { traverse, write } = require('addon-tools-raub');
-
-(async () => {
-	const list = await traverse('qml', true);
-	await write('qml.txt', list.join('\n'));
-})();
+const list = await traverse('qml', true);
+await fs.writeFile('qml.txt', list.join('\n'));
