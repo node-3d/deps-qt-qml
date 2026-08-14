@@ -15,7 +15,7 @@ npm install @node-3d/deps-qt-qml
 This dependency package distributes **Qt QML 6.8.0**
 binaries through **npm** for **Node.js** addons.
 
-* Platforms: Windows x64, Linux x64/ARM64, macOS ARM64.
+* Platforms: Windows x64/ARM64, Linux x64/ARM64, macOS x64/ARM64.
 * Libraries: Qt Qml.
 * Linking: dynamic dll-type.
 
