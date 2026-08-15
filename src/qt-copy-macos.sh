@@ -37,6 +37,13 @@ mkdir -p $1/QtQuickVectorImage.framework/Versions
 mkdir -p $1/QtQuickVectorImage.framework/Versions/Current
 cp $2/lib/QtQuickVectorImage.framework/Versions/Current/QtQuickVectorImage $1/QtQuickVectorImage.framework/Versions/Current/QtQuickVectorImage
 
+if [ -d "$2/lib/QtQuickVectorImageGenerator.framework" ]; then
+	mkdir -p $1/QtQuickVectorImageGenerator.framework
+	mkdir -p $1/QtQuickVectorImageGenerator.framework/Versions
+	mkdir -p $1/QtQuickVectorImageGenerator.framework/Versions/Current
+	cp $2/lib/QtQuickVectorImageGenerator.framework/Versions/Current/QtQuickVectorImageGenerator $1/QtQuickVectorImageGenerator.framework/Versions/Current/QtQuickVectorImageGenerator
+fi
+
 mkdir -p $1/QtQmlCompiler.framework
 mkdir -p $1/QtQmlCompiler.framework/Versions
 mkdir -p $1/QtQmlCompiler.framework/Versions/Current
