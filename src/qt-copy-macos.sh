@@ -319,3 +319,14 @@ cp $2/qml/QML/qmldir $1/qml/QML/qmldir
 cp $2/qml/Assets/Downloader/plugins.qmltypes $1/qml/Assets/Downloader/plugins.qmltypes
 cp $2/qml/Assets/Downloader/libqmlassetdownloaderplugin.dylib $1/qml/Assets/Downloader/libqmlassetdownloaderplugin.dylib
 cp $2/qml/Assets/Downloader/qmldir $1/qml/Assets/Downloader/qmldir
+
+for framework in "$1"/*.framework; do
+	name="$(basename "$framework" .framework)"
+	current="$framework/Versions/Current/$name"
+	version_a="$framework/Versions/A/$name"
+
+	if [ -f "$current" ] && [ ! -f "$version_a" ]; then
+		mkdir -p "$framework/Versions/A"
+		cp "$current" "$version_a"
+	fi
+done
